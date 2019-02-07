@@ -283,6 +283,8 @@ phina.define('MainScene', {
 		const player = this.data.player;
 
 		const progress = this.data.progress;
+		const record = this.data.record;
+
 		switch (progress.state) {
 		case StateId.S1I:
 			this.centerLabel.text = "おまえの秒を刻め！\nタップでスタート";
@@ -403,9 +405,9 @@ phina.define('MainScene', {
 			this.centerLabel.text = resultText;
 			progress.stateTime = 0;
 			progress.elapsedTime = 0;
+			record.recordI = 0;
 			break;
 		case StateId.S5:
-			let record = this.data.record;
 			while (record.recordI < record.tapTimes.length) {
 				const time = record.tapTimes[record.recordI];
 				if (time <= progress.stateTime) {
